@@ -1,9 +1,9 @@
-name: Refresh activity graph
+name: Refresh profile SVG
 
-# Regenerates assets/06-activity.svg from the public contribution graph so the
-# README heat-map stays current. Once "Include private contributions on my
-# profile" is enabled in GitHub settings, this picks up the fuller (~private)
-# graph automatically on the next run.
+# Regenerates assets/profile.svg (the whole one-piece profile, including the
+# contribution heat-map band) from the public contribution graph so the README
+# stays current. With "Include private contributions on my profile" enabled,
+# this reflects the fuller graph automatically.
 
 on:
   schedule:
@@ -12,14 +12,14 @@ on:
   push:
     branches: [main]
     paths:
-      - scripts/gen_activity.py
+      - scripts/gen_profile.py
       - .github/workflows/activity.yml
 
 permissions:
   contents: write
 
 concurrency:
-  group: activity-graph
+  group: profile-svg
   cancel-in-progress: true
 
 jobs:
@@ -30,16 +30,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate activity SVG
-        run: python3 scripts/gen_activity.py "${{ github.repository_owner }}" assets/06-activity.svg
+      - name: Generate profile SVG
+        run: python3 scripts/gen_profile.py "${{ github.repository_owner }}" assets/profile.svg
       - name: Commit if changed
         run: |
-          if [ -n "$(git status --porcelain assets/06-activity.svg)" ]; then
+          if [ -n "$(git status --porcelain assets/profile.svg)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add assets/06-activity.svg
-            git commit -m "chore: refresh GitHub activity graph"
+            git add assets/profile.svg
+            git commit -m "chore: refresh profile SVG"
             git push
           else
-            echo "No change in activity graph."
+            echo "No change in profile SVG."
           fi
