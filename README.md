@@ -10,6 +10,8 @@
 
 <img src="assets/04-lavender.svg" width="100%" alt="The stack: TypeScript, Next.js, React, Node, Postgres, Prisma, FastAPI, Docker">
 
+<img src="assets/06-activity.svg" width="100%" alt="GitHub contribution activity over the last year, shown as an animated heat-map">
+
 <img src="assets/05-marquee.svg" width="100%" alt="TypeScript, Next.js, React, Node, PostgreSQL, Prisma, Docker, FastAPI, Python, RAG, function-calling, multi-model routing, LLM observability, prompt engineering">
 
 <p align="center">
