@@ -1,0 +1,38 @@
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">Paul Cheng — AI engineering</title>
+<desc id="d">Ivory hero banner. The eyebrow, serif name (revealing word by word), clay accent line, and subtitle animate in, while a hand-drawn radial burst draws itself in on the right.</desc>
+<style>
+  .serif{font-family:Georgia,Charter,"Iowan Old Style","Times New Roman",serif}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .mono{font-family:"SF Mono","DM Mono","JetBrains Mono",ui-monospace,Menlo,monospace}
+  .rise{opacity:0;animation:rise .8s cubic-bezier(.25,1,.5,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .word{fill-opacity:0;animation:wfade 1s cubic-bezier(.25,1,.5,1) both}
+  @keyframes wfade{to{fill-opacity:1}}
+  .acc{transform-box:fill-box;transform-origin:left center;animation:grow .7s cubic-bezier(.25,1,.5,1) both}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .ln{fill:none;stroke:#141413;stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s cubic-bezier(.25,1,.5,1) forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .dot{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .5s cubic-bezier(.34,1.4,.5,1) both}
+  @keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+</style>
+<rect width="1200" height="420" rx="16" fill="#faf9f5"/>
+<text class="mono rise" style="animation-delay:.05s" x="66" y="86" font-size="13" letter-spacing="2.5" fill="#5e5d59">AI ENGINEERING — FULL-STACK TYPESCRIPT</text>
+<text class="serif" x="62" y="214" font-size="80" letter-spacing="-2" fill="#141413"><tspan class="word" style="animation-delay:.18s">Paul</tspan> <tspan class="word" style="animation-delay:.38s">Cheng</tspan></text>
+<rect class="acc" style="animation-delay:.55s" x="66" y="240" width="104" height="5" rx="2.5" fill="#d97757"/>
+<text class="sans rise" style="animation-delay:.66s" x="66" y="300" font-size="23" fill="#30302e">Turning AI demos into repeatable production practice.</text>
+<text class="mono rise" style="animation-delay:1.05s" x="66" y="374" font-size="14" fill="#898781">github.com/PaulCheng1122<tspan fill="#cfccc3">   ·   </tspan><tspan fill="#d97757">building in production →</tspan></text>
+<g>
+  <path class="ln" pathLength="1" style="animation-delay:.55s" d="M1030 175 Q1066 173 1098 176"/>
+  <path class="ln" pathLength="1" style="animation-delay:.61s" d="M1030 175 Q1058 148 1079 126"/>
+  <path class="ln" pathLength="1" style="animation-delay:.67s" d="M1030 175 Q1027 139 1031 106"/>
+  <path class="ln" pathLength="1" style="animation-delay:.73s" d="M1030 175 Q1000 150 981 127"/>
+  <path class="ln" pathLength="1" style="animation-delay:.79s" d="M1030 175 Q994 178 962 174"/>
+  <path class="ln" pathLength="1" style="animation-delay:.85s" d="M1030 175 Q1001 202 982 224"/>
+  <path class="ln" pathLength="1" style="animation-delay:.91s" d="M1030 175 Q1033 211 1029 244"/>
+  <path class="ln" pathLength="1" style="animation-delay:.97s" d="M1030 175 Q1059 200 1079 223"/>
+  <circle class="dot" style="animation-delay:1.22s" cx="1079" cy="126" r="6" fill="#d97757"/>
+  <circle class="dot" style="animation-delay:1.32s" cx="962" cy="174" r="6" fill="#d97757"/>
+  <circle class="dot" style="animation-delay:1.42s" cx="1029" cy="244" r="6" fill="#d97757"/>
+</g>
+</svg>

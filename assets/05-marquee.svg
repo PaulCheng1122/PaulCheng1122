@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1200 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">Tools and focus areas</title>
+<desc id="d">A cream strip with a seamless, infinitely looping marquee of languages, frameworks and AI engineering focus areas.</desc>
+<style>
+  .mono{font-family:"SF Mono","DM Mono","JetBrains Mono",ui-monospace,Menlo,monospace}
+  .scroller{animation:marquee 60s linear infinite}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-2400px)}}
+</style>
+<defs>
+  <clipPath id="strip"><rect x="0" y="0" width="1200" height="110" rx="16"/></clipPath>
+  <text id="trk" class="mono" y="62" font-size="17" textLength="2400" lengthAdjust="spacing"><tspan fill="#3d3d3a">TypeScript</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">Next.js</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">React</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">Node.js</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">PostgreSQL</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">Prisma</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">Docker</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">FastAPI</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">Python</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">RAG</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">function-calling</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">multi-model routing</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">LLM observability</tspan><tspan fill="#d97757">   •   </tspan><tspan fill="#3d3d3a">prompt engineering</tspan><tspan fill="#d97757">   •   </tspan></text>
+</defs>
+<rect width="1200" height="110" rx="16" fill="#f0eee6"/>
+<rect x="0" y="0.5" width="1200" height="1" fill="#d8d4c7"/>
+<rect x="0" y="108.5" width="1200" height="1" fill="#d8d4c7"/>
+<g clip-path="url(#strip)">
+  <g class="scroller">
+    <use href="#trk" x="0"/>
+    <use href="#trk" x="2400"/>
+  </g>
+</g>
+</svg>

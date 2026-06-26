@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">The stack</title>
+<desc id="d">Lavender section block, mirrored layout. A hand-drawn terminal window draws itself in on the left while the stack lines rise in on the right.</desc>
+<style>
+  .serif{font-family:Georgia,Charter,"Iowan Old Style","Times New Roman",serif}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .mono{font-family:"SF Mono","DM Mono","JetBrains Mono",ui-monospace,Menlo,monospace}
+  .rise{opacity:0;animation:rise .75s cubic-bezier(.25,1,.5,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .draw{fill:none;stroke:#141413;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s cubic-bezier(.25,1,.5,1) forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .blink{animation:blink 1.1s steps(1) infinite;animation-delay:1.9s}
+  @keyframes blink{50%{opacity:0}}
+</style>
+<rect width="1200" height="360" rx="16" fill="#cbcadb"/>
+<g>
+  <path class="draw" pathLength="1" style="animation-delay:.45s" d="M120 96 L360 96 Q380 96 380 116 L380 250 Q380 270 360 270 L120 270 Q100 270 100 250 L100 116 Q100 96 120 96 Z"/>
+  <path class="draw" pathLength="1" style="animation-delay:1.05s" d="M100 138 L380 138"/>
+  <circle class="draw" pathLength="1" style="animation-delay:1.2s" cx="124" cy="117" r="6"/>
+  <circle class="draw" pathLength="1" style="animation-delay:1.28s" cx="146" cy="117" r="6"/>
+  <circle class="draw" pathLength="1" style="animation-delay:1.36s" cx="168" cy="117" r="6"/>
+  <path class="draw" pathLength="1" style="animation-delay:1.45s" d="M126 174 L150 188 L126 202" stroke-width="5"/>
+  <path class="draw" pathLength="1" style="animation-delay:1.6s" d="M166 204 L250 204" stroke-width="5"/>
+  <path class="draw" pathLength="1" style="animation-delay:1.7s" d="M126 234 L300 234" stroke-width="5"/>
+  <rect class="blink" x="312" y="222" width="16" height="20" fill="#d97757"/>
+</g>
+<text class="mono rise" style="animation-delay:.05s" x="470" y="100" font-size="12" letter-spacing="2" fill="#30302e">THE STACK</text>
+<text class="serif rise" style="animation-delay:.12s" x="468" y="150" font-size="36" fill="#141413">Tools I reach for</text>
+<g class="sans" font-size="17" fill="#1f2030">
+  <text class="rise" style="animation-delay:.26s" x="470" y="196"><tspan fill="#5e5d59" class="mono" font-size="13">lang  </tspan>  TypeScript · JavaScript · Python · SQL</text>
+  <text class="rise" style="animation-delay:.35s" x="470" y="230"><tspan fill="#5e5d59" class="mono" font-size="13">web   </tspan>  Next.js · React · Tailwind · Framer Motion</text>
+  <text class="rise" style="animation-delay:.44s" x="470" y="264"><tspan fill="#5e5d59" class="mono" font-size="13">data  </tspan>  Node · Postgres · Prisma · FastAPI · MinIO</text>
+  <text class="rise" style="animation-delay:.53s" x="470" y="298"><tspan fill="#5e5d59" class="mono" font-size="13">ops   </tspan>  Docker · AWS EC2 · pnpm · SSH deploy</text>
+</g>
+</svg>
