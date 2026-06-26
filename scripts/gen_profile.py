@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Generate a SINGLE seamless profile SVG (assets/profile.svg).
 
-All sections are full-width bands that touch edge to edge inside one rounded
-frame, so the README reads as one continuous surface instead of separate cards.
-The contribution heat-map band is built from the live public contribution graph
-(includes anonymized private contributions when that profile setting is on).
+Every section is a full-width band touching its neighbours edge to edge inside
+one rounded frame, so the whole README is one continuous Claude-style surface:
+hero -> 3 anonymized case studies -> how I work -> the stack -> contribution
+heat-map -> tools marquee. The heat-map is built live from the public
+contribution graph. All motion is CSS @keyframes baked into the file.
 
 Usage: python3 scripts/gen_profile.py [login] [out_path]
 """
@@ -15,17 +16,7 @@ OUT = sys.argv[2] if len(sys.argv) > 2 else "assets/profile.svg"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120 Safari/537.36")
 
-# ---- band layout (full width 1200; bands stack flush, no gaps) ----
-HERO_H, SAND_H, SAGE_H, LAV_H, ACT_H, MARQ_H = 360, 330, 320, 320, 290, 104
-HERO_Y = 0
-SAND_Y = HERO_Y + HERO_H
-SAGE_Y = SAND_Y + SAND_H
-LAV_Y  = SAGE_Y + SAGE_H
-ACT_Y  = LAV_Y + LAV_H
-MARQ_Y = ACT_Y + ACT_H
-TOTAL  = MARQ_Y + MARQ_H
-
-# ============================ static section fragments ============================
+# ============================ static fragments (local coords) ============================
 HERO = '''
 <text class="mono rise" style="animation-delay:.05s" x="64" y="74" font-size="13" letter-spacing="2.5" fill="#5e5d59">AI ENGINEERING — FULL-STACK TYPESCRIPT</text>
 <text class="serif" x="60" y="196" font-size="78" letter-spacing="-2" fill="#141413"><tspan class="word" style="animation-delay:.18s">Paul</tspan> <tspan class="word" style="animation-delay:.38s">Cheng</tspan></text>
@@ -46,37 +37,9 @@ HERO = '''
   <circle class="dot" style="animation-delay:1.42s" cx="1029" cy="234" r="6" fill="#d97757"/>
 </g>'''
 
-SAND = '''
-<text class="mono rise" style="animation-delay:.05s" x="48" y="60" font-size="12" letter-spacing="2" fill="#5e5d59">WHAT I BUILD</text>
-<text class="serif rise" style="animation-delay:.12s" x="46" y="110" font-size="36" fill="#141413">Turning AI demos into production</text>
-<g class="card" style="animation-delay:.22s">
-  <rect x="48" y="142" width="352" height="158" rx="8" fill="#19191919"/>
-  <text class="mono" x="74" y="178" font-size="11" letter-spacing="1.5" fill="#5e5d59">01 · LLM APPS</text>
-  <text class="serif" x="73" y="210" font-size="21" fill="#141413">Streaming + RAG</text>
-  <text class="sans" x="74" y="242" font-size="14" fill="#30302e">Function-calling, tool-use, and</text>
-  <text class="sans" x="74" y="263" font-size="14" fill="#30302e">DONE-signal parsing over fully</text>
-  <text class="sans" x="74" y="284" font-size="14" fill="#30302e">observable model calls.</text>
-</g>
-<g class="card" style="animation-delay:.30s">
-  <rect x="424" y="142" width="352" height="158" rx="8" fill="#19191919"/>
-  <text class="mono" x="450" y="178" font-size="11" letter-spacing="1.5" fill="#5e5d59">02 · ROUTING</text>
-  <text class="serif" x="449" y="210" font-size="21" fill="#141413">Multi-model</text>
-  <text class="sans" x="450" y="242" font-size="14" fill="#30302e">Qwen, GLM, DeepSeek, DashScope</text>
-  <text class="sans" x="450" y="263" font-size="14" fill="#30302e">and OpenRouter behind a single</text>
-  <text class="sans" x="450" y="284" font-size="14" fill="#30302e">routing layer.</text>
-</g>
-<g class="card" style="animation-delay:.38s">
-  <rect x="800" y="142" width="352" height="158" rx="8" fill="#19191919"/>
-  <text class="mono" x="826" y="178" font-size="11" letter-spacing="1.5" fill="#5e5d59">03 · SIGNALS</text>
-  <text class="serif" x="825" y="210" font-size="21" fill="#141413">Observability</text>
-  <text class="sans" x="826" y="242" font-size="14" fill="#30302e">Logged calls, latency, tokens</text>
-  <text class="sans" x="826" y="263" font-size="14" fill="#30302e">and tool traces you can open</text>
-  <text class="sans" x="826" y="284" font-size="14" fill="#30302e">up and inspect.</text>
-</g>'''
-
-SAGE = '''
-<text class="mono rise" style="animation-delay:.05s" x="48" y="60" font-size="12" letter-spacing="2" fill="#30302e">HOW I WORK</text>
-<text class="serif rise" style="animation-delay:.12s" x="46" y="110" font-size="34" fill="#141413">Engineering style</text>
+HOWWORK = '''
+<text class="mono rise" style="animation-delay:.05s" x="48" y="58" font-size="12" letter-spacing="2" fill="#30302e">HOW I WORK</text>
+<text class="serif rise" style="animation-delay:.12s" x="46" y="108" font-size="34" fill="#141413">Engineering style</text>
 <g class="sans" font-size="16.5" fill="#1f2420">
   <g class="rise" style="animation-delay:.24s"><circle cx="54" cy="151" r="4" fill="#d97757"/><text x="74" y="156">Product thinking before implementation detail.</text></g>
   <g class="rise" style="animation-delay:.33s"><circle cx="54" cy="189" r="4" fill="#d97757"/><text x="74" y="194">Small, reviewable changes over big rewrites.</text></g>
@@ -93,7 +56,7 @@ SAGE = '''
   <circle class="dot" style="animation-delay:1.7s" cx="946" cy="120" r="7" fill="#d97757"/>
 </g>'''
 
-LAV = '''
+STACKB = '''
 <g transform="translate(0,-6)">
   <path class="draw" pathLength="1" style="animation-delay:.45s" d="M120 96 L360 96 Q380 96 380 116 L380 250 Q380 270 360 270 L120 270 Q100 270 100 250 L100 116 Q100 96 120 96 Z"/>
   <path class="draw" pathLength="1" style="animation-delay:1.05s" d="M100 138 L380 138"/>
@@ -119,6 +82,83 @@ MARQUEE = '''
 <rect x="0" y="102.5" width="1200" height="1" fill="#d8d4c7"/>
 <g class="scroller"><use href="#m-trk" x="0"/><use href="#m-trk" x="2400"/></g>'''
 
+# ---- case-study band builder ----
+def cs(idx, title, what, bullets, impact, stack, doodle=""):
+    p = [f'<text class="mono rise" style="animation-delay:.05s" x="48" y="58" font-size="12" letter-spacing="2" fill="#5e5d59">SELECTED WORK · 0{idx}</text>',
+         f'<text class="serif rise" style="animation-delay:.12s" x="46" y="100" font-size="29" fill="#141413">{title}</text>',
+         f'<rect class="acc" style="animation-delay:.4s" x="48" y="114" width="56" height="4" rx="2" fill="#d97757"/>',
+         f'<text class="sans rise" style="animation-delay:.18s" x="48" y="148" font-size="15" fill="#46443f">{what}</text>']
+    y = 186
+    for i, b in enumerate(bullets):
+        d = round(0.26 + i * 0.07, 3)
+        p.append(f'<g class="rise" style="animation-delay:{d}s"><circle cx="54" cy="{y-5}" r="3.5" fill="#d97757"/>'
+                 f'<text class="sans" x="72" y="{y}" font-size="14.5" fill="#30302e">{b}</text></g>')
+        y += 28
+    iy = y + 12
+    p.append(f'<text class="rise" style="animation-delay:.56s" x="48" y="{iy}" font-size="14.5" fill="#141413">'
+             f'<tspan class="mono" font-size="11.5" fill="#9a6b50">IMPACT  </tspan><tspan class="sans">{impact}</tspan></text>')
+    p.append(f'<text class="mono rise" style="animation-delay:.64s" x="48" y="{iy+28}" font-size="12.5" fill="#7a776f">{stack}</text>')
+    return "".join(p) + doodle, iy + 44
+
+# ---- hand-drawn doodles for each case study (draw-on, on the right) ----
+DOO1 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M946 250 L946 98 Q946 92 952 92 L1046 92 L1080 124 L1080 244 Q1080 250 1074 250 L952 250 Q946 250 946 250 Z"/>
+<path class="draw" pathLength="1" style="animation-delay:.9s" d="M1046 92 L1046 124 L1080 124"/>
+<path class="draw" pathLength="1" style="animation-delay:1.02s;stroke-width:4" d="M968 150 L1058 150"/>
+<path class="draw" pathLength="1" style="animation-delay:1.12s;stroke-width:4" d="M968 174 L1058 174"/>
+<path class="draw" pathLength="1" style="animation-delay:1.22s;stroke-width:4" d="M968 198 L1026 198"/>
+<path class="draw" pathLength="1" style="animation-delay:1.34s;stroke:#d97757;stroke-width:4" d="M1100 80 L1100 62"/>
+<path class="draw" pathLength="1" style="animation-delay:1.4s;stroke:#d97757;stroke-width:4" d="M1100 80 L1117 71"/>
+<path class="draw" pathLength="1" style="animation-delay:1.46s;stroke:#d97757;stroke-width:4" d="M1100 80 L1117 91"/>
+<path class="draw" pathLength="1" style="animation-delay:1.52s;stroke:#d97757;stroke-width:4" d="M1100 80 L1083 89"/>
+</g>'''
+
+DOO2 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M952 146 L1046 146 Q1056 146 1056 156 L1056 182 Q1056 192 1046 192 L952 192 Q942 192 942 182 L942 156 Q942 146 952 146 Z"/>
+<circle class="draw" pathLength="1" style="animation-delay:.92s" cx="1014" cy="169" r="13"/>
+<path class="draw" pathLength="1" style="animation-delay:1.05s" d="M986 146 L986 130"/>
+<path class="draw" pathLength="1" style="animation-delay:1.14s;stroke-width:5" d="M966 128 L1006 128"/>
+<path class="draw" pathLength="1" style="animation-delay:1.26s;stroke:#d97757;stroke-width:4" d="M1066 156 Q1082 169 1066 182"/>
+<path class="draw" pathLength="1" style="animation-delay:1.36s;stroke:#d97757;stroke-width:4" d="M1076 148 Q1100 169 1076 190"/>
+<circle class="dot" style="animation-delay:1.55s" cx="1014" cy="169" r="4" fill="#d97757"/>
+</g>'''
+
+DOO3 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M936 100 L1084 100 Q1090 100 1090 106 L1090 224 Q1090 230 1084 230 L936 230 Q930 230 930 224 L930 106 Q930 100 936 100 Z"/>
+<path class="draw" pathLength="1" style="animation-delay:.85s;stroke-width:5" d="M930 136 L1090 136"/>
+<path class="draw" pathLength="1" style="animation-delay:.96s;stroke-width:5" d="M930 170 L1090 170"/>
+<path class="draw" pathLength="1" style="animation-delay:1.06s;stroke-width:5" d="M930 200 L1090 200"/>
+<path class="draw" pathLength="1" style="animation-delay:1.16s;stroke-width:5" d="M984 100 L984 230"/>
+<path class="draw" pathLength="1" style="animation-delay:1.26s;stroke-width:5" d="M1036 100 L1036 230"/>
+<path class="draw" pathLength="1" style="animation-delay:1.42s;stroke:#d97757;stroke-width:5" d="M1046 188 L1058 200 L1076 176"/>
+</g>'''
+
+SW1, H1 = cs(1, "LLM patent-drafting platform · sole engineer",
+    "Internal app to draft, dedup, review and quality-check invention patents end to end.",
+    ["Multi-stage LLM pipeline: idea analysis → novelty search → AI drafting → QC scoring.",
+     "Structured Claim Self-Check agent — 6 scored dimensions, L1 gate + L2 critic pass.",
+     "“Report bug → AI triage → AI fix → human-gated merge” GitHub Actions workflow.",
+     "Code-health sprint: +37 tests to a zero-test repo, −37% on a 2,953-line component."],
+    "100+ merged PRs · admin BI dashboard over a 380-person org · measurable lift in approval rates.",
+    "Next.js · React · TypeScript · Prisma · Postgres · Qwen / Qwen-VL + RAG · 9 ADRs", DOO1)
+
+SW2, H2 = cs(2, "Self-built RTSP camera + vision-LLM monitoring",
+    "A computer-vision system for factory workstations — action segmentation and real-time alarms.",
+    ["Brought up a self-built IP camera (RTSP / H.264) end to end; wrote LAN auto-discovery.",
+     "Fixed an ffmpeg 8.x regression so RTSP ingestion stopped timing out.",
+     "Real-time error-prevention: ~5s alarm latency, AI rule-gen from SOP text or video.",
+     "Integrated a Qwen-VL vision model with duplicate-segment skip."],
+    "Shipped V1 + V2 · verified end to end on real hardware · graded factory acceptance.",
+    "Python · ffmpeg / ffprobe · Qwen-VL · edge / LAN deployment", DOO2)
+
+SW3, H3 = cs(3, "LLM-agent runtime + AI test-report audit",
+    "Integration and delivery across a Rust LLM-agent gateway and an AI Excel audit tool.",
+    ["Architecture call: audit app calls the model provider directly vs. via the gateway.",
+     "Reconciled a colleague's v1.2 via surgical file-by-file merge across three copies.",
+     "Read-only BI usage-export API with constant-time X-API-Key auth."],
+    "One PR: 43 files / +10.7k lines · clean multi-engineer handoffs.",
+    "Rust gateway · Python FastAPI · dashscope (Qwen + DeepSeek) · MySQL · Docker", DOO3)
+
 # ============================ dynamic activity band ============================
 def build_activity():
     req = urllib.request.Request(
@@ -135,13 +175,11 @@ def build_activity():
         m = re.match(r'\s*([\d,]+)\s+contribution', text)
         counts[cid] = int(m.group(1).replace(",", "")) if m else 0
     total = sum(counts.values())
-
     dates = [datetime.date.fromisoformat(d) for d, _ in cells]
     row_of = lambda dt: dt.isoweekday() % 7
     anchor = min(dates) - datetime.timedelta(days=row_of(min(dates)))
     CELL, STEP, GX, GY = 11, 14, 120, 150
     RAMP = ["#e9e5d8", "#c6d8a6", "#93bd68", "#5e9a43", "#3a6b28"]
-
     rects, max_col = [], 0
     for ds, lv in cells:
         dt = datetime.date.fromisoformat(ds)
@@ -150,7 +188,6 @@ def build_activity():
         delay = round(0.30 + col * 0.018, 3)
         rects.append(f'<rect class="cell" style="animation-delay:{delay}s" x="{GX+col*STEP}" '
                      f'y="{GY+row*STEP}" width="{CELL}" height="{CELL}" rx="2" fill="{RAMP[lv]}"/>')
-
     MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     months, last_m, last_c = [], None, -3
     for col in range(max_col + 1):
@@ -166,21 +203,39 @@ def build_activity():
     for i, c in enumerate(RAMP):
         legend.append(f'<rect x="{gx0+i*16}" y="{ly}" width="11" height="11" rx="2" fill="{c}"/>')
     legend.append(f'<text class="lbl" x="{gx0+5*16+4}" y="{ly+9}" font-size="11" fill="#8a8780">More</text>')
-
     inner = (f'<text class="mono rise" style="animation-delay:.05s" x="56" y="58" font-size="12" letter-spacing="2" fill="#5e5d59">LAST YEAR ON GITHUB</text>'
              f'<text class="serif rise" style="animation-delay:.12s" x="54" y="104" font-size="32" fill="#141413">{total} contributions</text>'
              f'<g>{"".join(months)}</g><g>{"".join(wk)}</g><g>{"".join(rects)}</g>'
              f'<g class="rise" style="animation-delay:1.2s">{"".join(legend)}</g>')
-    return inner, total
+    return inner, total, ly + 30
 
-ACT_INNER, TOTAL_C = build_activity()
+ACT, TOTAL_C, ACT_H = build_activity()
 
-# ============================ assemble one SVG ============================
+# ============================ assemble ============================
 M_TRK = ('<text id="m-trk" class="mono" y="62" font-size="17" textLength="2400" lengthAdjust="spacing">'
     + "".join(f'<tspan fill="#3d3d3a">{w}</tspan><tspan fill="#d97757">   •   </tspan>' for w in
         ["TypeScript","Next.js","React","Node.js","PostgreSQL","Prisma","Docker","FastAPI",
          "Python","RAG","function-calling","multi-model routing","LLM observability","prompt engineering"])
     + '</text>')
+
+# (fragment, height, background) — bands stack flush, top-to-bottom
+BANDS = [
+    (HERO,   360, "#faf9f5"),
+    (SW1,    H1,  "#e3dacc"),
+    (SW2,    H2,  "#bcd1ca"),
+    (SW3,    H3,  "#cbcadb"),
+    (HOWWORK,320, "#ebcece"),
+    (STACKB, 320, "#e3dacc"),
+    (ACT,    ACT_H + 8, "#faf9f5"),
+    (MARQUEE,104, "#f0eee6"),
+]
+TOTAL = sum(h for _, h, _ in BANDS)
+
+bgs, groups, y = [], [], 0
+for frag, h, bg in BANDS:
+    bgs.append(f'<rect x="0" y="{y}" width="1200" height="{h}" fill="{bg}"/>')
+    groups.append(f'<g transform="translate(0,{y})">{frag}</g>')
+    y += h
 
 STYLE = '''
   .serif{font-family:Georgia,Charter,"Iowan Old Style","Times New Roman",serif}
@@ -197,8 +252,6 @@ STYLE = '''
   @keyframes draw{to{stroke-dashoffset:0}}
   .dot{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .5s cubic-bezier(.34,1.4,.5,1) both}
   @keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
-  .card{opacity:0;animation:craise .45s cubic-bezier(.25,1,.5,1) both}
-  @keyframes craise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
   .cell{transform-box:fill-box;transform-origin:center;opacity:0;animation:cin .5s cubic-bezier(.25,1,.5,1) both}
   @keyframes cin{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
   .blink{animation:blink 1.1s steps(1) infinite;animation-delay:1.9s}
@@ -208,28 +261,18 @@ STYLE = '''
 
 svg = f'''<svg viewBox="0 0 1200 {TOTAL}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
 <title id="t">Paul Cheng — AI engineering</title>
-<desc id="d">One continuous profile: hero, what I build, how I work, the stack, {TOTAL_C} contributions over the last year, and a looping tools marquee.</desc>
+<desc id="d">One continuous profile: hero, three case studies (LLM patent-drafting platform; self-built RTSP camera + Qwen-VL workstation monitoring; LLM-agent runtime + AI test-report audit), how I work, the stack, {TOTAL_C} contributions over the last year, and a tools marquee.</desc>
 <style>{STYLE}</style>
 <defs>
   <clipPath id="frame"><rect width="1200" height="{TOTAL}" rx="18"/></clipPath>
   {M_TRK}
 </defs>
 <g clip-path="url(#frame)">
-  <rect x="0" y="{HERO_Y}" width="1200" height="{HERO_H}" fill="#faf9f5"/>
-  <rect x="0" y="{SAND_Y}" width="1200" height="{SAND_H}" fill="#e3dacc"/>
-  <rect x="0" y="{SAGE_Y}" width="1200" height="{SAGE_H}" fill="#bcd1ca"/>
-  <rect x="0" y="{LAV_Y}" width="1200" height="{LAV_H}" fill="#cbcadb"/>
-  <rect x="0" y="{ACT_Y}" width="1200" height="{ACT_H}" fill="#faf9f5"/>
-  <rect x="0" y="{MARQ_Y}" width="1200" height="{MARQ_H}" fill="#f0eee6"/>
-  <g transform="translate(0,{HERO_Y})">{HERO}</g>
-  <g transform="translate(0,{SAND_Y})">{SAND}</g>
-  <g transform="translate(0,{SAGE_Y})">{SAGE}</g>
-  <g transform="translate(0,{LAV_Y})">{LAV}</g>
-  <g transform="translate(0,{ACT_Y})">{ACT_INNER}</g>
-  <g transform="translate(0,{MARQ_Y})">{MARQUEE}</g>
+  {"".join(bgs)}
+  {"".join(groups)}
 </g>
 </svg>
 '''
 with open(OUT, "w") as f:
     f.write(svg)
-print(f"wrote {OUT}: total_contributions={TOTAL_C}, height={TOTAL}")
+print(f"wrote {OUT}: contributions={TOTAL_C}, height={TOTAL}, bands={len(BANDS)}")
