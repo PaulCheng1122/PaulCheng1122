@@ -1,0 +1,137 @@
+<svg width="1100" height="410" viewBox="0 0 1100 410" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">LLM application pipeline</title>
+  <desc id="desc">Animated diagram showing user request, app router, context retrieval, tools, model providers, LLM logging, and product output.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1100" y2="410">
+      <stop stop-color="#0D1117"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#16121F"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#78DCE8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#78DCE8"/>
+      <stop offset="1" stop-color="#50E3C2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="warmFlow" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FF5C8A" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#F8D66D"/>
+      <stop offset="1" stop-color="#78DCE8" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" stroke="#263447" stroke-width="1" opacity="0.34"/>
+    </pattern>
+    <filter id="nodeGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.47  0 0 0 0 0.86  0 0 0 0 0.91  0 0 0 0.65 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+      .sans { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .heading { font-size: 28px; font-weight: 740; fill: #D6E2F0; letter-spacing: 0; }
+      .label { font-size: 12px; letter-spacing: 1px; fill: #8EA3B8; }
+      .body { font-size: 14px; fill: #D6E2F0; }
+      .node { fill: rgba(10, 16, 27, 0.82); stroke: rgba(120, 220, 232, 0.32); }
+      .edge { stroke-dasharray: 10 12; animation: move 6s linear infinite; }
+      .edge2 { stroke-dasharray: 6 10; animation: move 5s linear infinite reverse; }
+      .pulse { animation: pulse 2.6s ease-in-out infinite; }
+      .pulse2 { animation: pulse 3.4s ease-in-out infinite; }
+      .tick { animation: tick 2.2s ease-in-out infinite; transform-origin: center; }
+      @keyframes move { to { stroke-dashoffset: -132; } }
+      @keyframes pulse { 0%, 100% { opacity: 0.46; } 50% { opacity: 1; } }
+      @keyframes tick { 0%, 100% { transform: scale(0.95); opacity: 0.62; } 50% { transform: scale(1.06); opacity: 1; } }
+    </style>
+  </defs>
+
+  <rect width="1100" height="410" rx="24" fill="url(#bg)"/>
+  <rect width="1100" height="410" rx="24" fill="url(#grid)"/>
+  <circle cx="160" cy="70" r="170" fill="#78DCE8" opacity="0.05"/>
+  <circle cx="910" cy="318" r="210" fill="#FF5C8A" opacity="0.06"/>
+  <circle cx="532" cy="205" r="260" fill="#50E3C2" opacity="0.035"/>
+
+  <text class="mono label" x="40" y="48">ARCHITECTURE SNAPSHOT</text>
+  <text class="sans heading" x="40" y="84">LLM application pipeline I like to build</text>
+
+  <path class="edge" d="M166 180 H286" stroke="url(#flow)" stroke-width="3" fill="none"/>
+  <path class="edge" d="M414 180 H526" stroke="url(#flow)" stroke-width="3" fill="none"/>
+  <path class="edge" d="M654 180 H766" stroke="url(#flow)" stroke-width="3" fill="none"/>
+  <path class="edge" d="M894 180 H1018" stroke="url(#flow)" stroke-width="3" fill="none"/>
+  <path class="edge2" d="M470 240 C522 315, 626 315, 690 240" stroke="url(#warmFlow)" stroke-width="3" fill="none"/>
+  <path class="edge2" d="M590 132 C626 96, 704 96, 750 132" stroke="url(#warmFlow)" stroke-width="3" fill="none"/>
+
+  <g transform="translate(40 132)" filter="url(#nodeGlow)">
+    <rect class="node" width="126" height="96" rx="16"/>
+    <text class="mono label" x="18" y="32">INPUT</text>
+    <text class="mono body" x="18" y="58">user request</text>
+    <circle class="pulse" cx="104" cy="28" r="6" fill="#50E3C2"/>
+  </g>
+
+  <g transform="translate(286 132)">
+    <rect class="node" width="128" height="96" rx="16"/>
+    <text class="mono label" x="18" y="32">APP LAYER</text>
+    <text class="mono body" x="18" y="58">Next.js</text>
+    <text class="mono body" x="18" y="78">API routes</text>
+  </g>
+
+  <g transform="translate(526 132)">
+    <rect class="node" width="128" height="96" rx="16"/>
+    <text class="mono label" x="18" y="32">ROUTER</text>
+    <text class="mono body" x="18" y="58">prompt</text>
+    <text class="mono body" x="18" y="78">policy + tools</text>
+    <circle class="tick" cx="106" cy="28" r="6" fill="#F8D66D"/>
+  </g>
+
+  <g transform="translate(766 132)">
+    <rect class="node" width="128" height="96" rx="16"/>
+    <text class="mono label" x="18" y="32">MODELS</text>
+    <text class="mono body" x="18" y="58">Qwen / GLM</text>
+    <text class="mono body" x="18" y="78">DeepSeek</text>
+  </g>
+
+  <g transform="translate(1018 132)">
+    <rect class="node" width="42" height="96" rx="16"/>
+    <text class="mono label" transform="translate(25 76) rotate(-90)">PRODUCT</text>
+  </g>
+
+  <g transform="translate(420 266)">
+    <rect class="node" width="126" height="82" rx="16"/>
+    <text class="mono label" x="18" y="31">CONTEXT</text>
+    <text class="mono body" x="18" y="57">RAG + SQL</text>
+  </g>
+
+  <g transform="translate(608 266)">
+    <rect class="node" width="126" height="82" rx="16"/>
+    <text class="mono label" x="18" y="31">TOOLS</text>
+    <text class="mono body" x="18" y="57">function calls</text>
+  </g>
+
+  <g transform="translate(744 32)">
+    <rect class="node" width="314" height="64" rx="16"/>
+    <text class="mono label" x="20" y="27">OBSERVABILITY</text>
+    <text class="mono body" x="20" y="49">logs -> tokens, latency, tools</text>
+  </g>
+
+  <g opacity="0.92">
+    <circle r="5" fill="#78DCE8">
+      <animateMotion dur="5.2s" repeatCount="indefinite" path="M166 180 H286"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="5.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="5" fill="#50E3C2">
+      <animateMotion dur="5.8s" repeatCount="indefinite" path="M414 180 H526"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="5.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="5" fill="#F8D66D">
+      <animateMotion dur="6.3s" repeatCount="indefinite" path="M654 180 H766"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="6.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="5" fill="#FF5C8A">
+      <animateMotion dur="6.8s" repeatCount="indefinite" path="M894 180 H1018"/>
+      <animate attributeName="opacity" values="0;1;1;0" dur="6.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <text class="mono label" x="40" y="378">Built around production signals: streaming, retrieval, tool calls, model routing, and traceable output.</text>
+</svg>
