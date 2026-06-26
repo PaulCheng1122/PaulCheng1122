@@ -83,7 +83,7 @@ MARQUEE = '''
 <g class="scroller"><use href="#m-trk" x="0"/><use href="#m-trk" x="2400"/></g>'''
 
 # ---- case-study band builder ----
-def cs(idx, title, what, bullets, impact, stack):
+def cs(idx, title, what, bullets, impact, stack, doodle=""):
     p = [f'<text class="mono rise" style="animation-delay:.05s" x="48" y="58" font-size="12" letter-spacing="2" fill="#5e5d59">SELECTED WORK · 0{idx}</text>',
          f'<text class="serif rise" style="animation-delay:.12s" x="46" y="100" font-size="29" fill="#141413">{title}</text>',
          f'<rect class="acc" style="animation-delay:.4s" x="48" y="114" width="56" height="4" rx="2" fill="#d97757"/>',
@@ -98,7 +98,40 @@ def cs(idx, title, what, bullets, impact, stack):
     p.append(f'<text class="rise" style="animation-delay:.56s" x="48" y="{iy}" font-size="14.5" fill="#141413">'
              f'<tspan class="mono" font-size="11.5" fill="#9a6b50">IMPACT  </tspan><tspan class="sans">{impact}</tspan></text>')
     p.append(f'<text class="mono rise" style="animation-delay:.64s" x="48" y="{iy+28}" font-size="12.5" fill="#7a776f">{stack}</text>')
-    return "".join(p), iy + 44
+    return "".join(p) + doodle, iy + 44
+
+# ---- hand-drawn doodles for each case study (draw-on, on the right) ----
+DOO1 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M946 250 L946 98 Q946 92 952 92 L1046 92 L1080 124 L1080 244 Q1080 250 1074 250 L952 250 Q946 250 946 250 Z"/>
+<path class="draw" pathLength="1" style="animation-delay:.9s" d="M1046 92 L1046 124 L1080 124"/>
+<path class="draw" pathLength="1" style="animation-delay:1.02s;stroke-width:4" d="M968 150 L1058 150"/>
+<path class="draw" pathLength="1" style="animation-delay:1.12s;stroke-width:4" d="M968 174 L1058 174"/>
+<path class="draw" pathLength="1" style="animation-delay:1.22s;stroke-width:4" d="M968 198 L1026 198"/>
+<path class="draw" pathLength="1" style="animation-delay:1.34s;stroke:#d97757;stroke-width:4" d="M1100 80 L1100 62"/>
+<path class="draw" pathLength="1" style="animation-delay:1.4s;stroke:#d97757;stroke-width:4" d="M1100 80 L1117 71"/>
+<path class="draw" pathLength="1" style="animation-delay:1.46s;stroke:#d97757;stroke-width:4" d="M1100 80 L1117 91"/>
+<path class="draw" pathLength="1" style="animation-delay:1.52s;stroke:#d97757;stroke-width:4" d="M1100 80 L1083 89"/>
+</g>'''
+
+DOO2 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M952 146 L1046 146 Q1056 146 1056 156 L1056 182 Q1056 192 1046 192 L952 192 Q942 192 942 182 L942 156 Q942 146 952 146 Z"/>
+<circle class="draw" pathLength="1" style="animation-delay:.92s" cx="1014" cy="169" r="13"/>
+<path class="draw" pathLength="1" style="animation-delay:1.05s" d="M986 146 L986 130"/>
+<path class="draw" pathLength="1" style="animation-delay:1.14s;stroke-width:5" d="M966 128 L1006 128"/>
+<path class="draw" pathLength="1" style="animation-delay:1.26s;stroke:#d97757;stroke-width:4" d="M1066 156 Q1082 169 1066 182"/>
+<path class="draw" pathLength="1" style="animation-delay:1.36s;stroke:#d97757;stroke-width:4" d="M1076 148 Q1100 169 1076 190"/>
+<circle class="dot" style="animation-delay:1.55s" cx="1014" cy="169" r="4" fill="#d97757"/>
+</g>'''
+
+DOO3 = '''<g>
+<path class="draw" pathLength="1" style="animation-delay:.5s" d="M936 100 L1084 100 Q1090 100 1090 106 L1090 224 Q1090 230 1084 230 L936 230 Q930 230 930 224 L930 106 Q930 100 936 100 Z"/>
+<path class="draw" pathLength="1" style="animation-delay:.85s;stroke-width:5" d="M930 136 L1090 136"/>
+<path class="draw" pathLength="1" style="animation-delay:.96s;stroke-width:5" d="M930 170 L1090 170"/>
+<path class="draw" pathLength="1" style="animation-delay:1.06s;stroke-width:5" d="M930 200 L1090 200"/>
+<path class="draw" pathLength="1" style="animation-delay:1.16s;stroke-width:5" d="M984 100 L984 230"/>
+<path class="draw" pathLength="1" style="animation-delay:1.26s;stroke-width:5" d="M1036 100 L1036 230"/>
+<path class="draw" pathLength="1" style="animation-delay:1.42s;stroke:#d97757;stroke-width:5" d="M1046 188 L1058 200 L1076 176"/>
+</g>'''
 
 SW1, H1 = cs(1, "LLM patent-drafting platform · sole engineer",
     "Internal app to draft, dedup, review and quality-check invention patents end to end.",
@@ -107,7 +140,7 @@ SW1, H1 = cs(1, "LLM patent-drafting platform · sole engineer",
      "“Report bug → AI triage → AI fix → human-gated merge” GitHub Actions workflow.",
      "Code-health sprint: +37 tests to a zero-test repo, −37% on a 2,953-line component."],
     "100+ merged PRs · admin BI dashboard over a 380-person org · measurable lift in approval rates.",
-    "Next.js · React · TypeScript · Prisma · Postgres · Qwen / Qwen-VL + RAG · 9 ADRs")
+    "Next.js · React · TypeScript · Prisma · Postgres · Qwen / Qwen-VL + RAG · 9 ADRs", DOO1)
 
 SW2, H2 = cs(2, "Self-built RTSP camera + vision-LLM monitoring",
     "A computer-vision system for factory workstations — action segmentation and real-time alarms.",
@@ -116,7 +149,7 @@ SW2, H2 = cs(2, "Self-built RTSP camera + vision-LLM monitoring",
      "Real-time error-prevention: ~5s alarm latency, AI rule-gen from SOP text or video.",
      "Integrated a Qwen-VL vision model with duplicate-segment skip."],
     "Shipped V1 + V2 · verified end to end on real hardware · graded factory acceptance.",
-    "Python · ffmpeg / ffprobe · Qwen-VL · edge / LAN deployment")
+    "Python · ffmpeg / ffprobe · Qwen-VL · edge / LAN deployment", DOO2)
 
 SW3, H3 = cs(3, "LLM-agent runtime + AI test-report audit",
     "Integration and delivery across a Rust LLM-agent gateway and an AI Excel audit tool.",
@@ -124,7 +157,7 @@ SW3, H3 = cs(3, "LLM-agent runtime + AI test-report audit",
      "Reconciled a colleague's v1.2 via surgical file-by-file merge across three copies.",
      "Read-only BI usage-export API with constant-time X-API-Key auth."],
     "One PR: 43 files / +10.7k lines · clean multi-engineer handoffs.",
-    "Rust gateway · Python FastAPI · dashscope (Qwen + DeepSeek) · MySQL · Docker")
+    "Rust gateway · Python FastAPI · dashscope (Qwen + DeepSeek) · MySQL · Docker", DOO3)
 
 # ============================ dynamic activity band ============================
 def build_activity():
