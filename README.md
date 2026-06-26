@@ -1,89 +1,54 @@
 <p align="center">
-  <img src="./assets/ai-control-room.svg" alt="Paul Cheng AI Engineering Control Room" width="100%" />
+  <img src="./assets/profile-cover.svg" alt="Paul Cheng profile cover" width="100%" />
 </p>
 
-<h1 align="center">Paul Cheng</h1>
+# Paul Cheng
 
-<p align="center">
-  <b>Full-stack TypeScript developer building LLM applications and AI engineering workflows.</b>
-</p>
+I build full-stack TypeScript products and LLM systems, with a focus on making AI useful inside real engineering teams.
 
-<p align="center">
-  <a href="https://github.com/PaulCheng1122?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/repos-PaulCheng1122-78DCE8?style=for-the-badge&labelColor=0D1117"></a>
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-main-3178C6?style=for-the-badge&labelColor=0D1117">
-  <img alt="LLM Apps" src="https://img.shields.io/badge/LLM-applications-50E3C2?style=for-the-badge&labelColor=0D1117">
-  <img alt="AI Engineering" src="https://img.shields.io/badge/AI-engineering-F8D66D?style=for-the-badge&labelColor=0D1117">
-</p>
+My work sits between product engineering, model integration, and team-level AI adoption: streaming interfaces, RAG, function calling, LLM observability, and agentic coding workflows.
 
 ---
 
-## About
-
-I build practical software across product engineering, LLM systems, and AI-assisted engineering workflows.
-
-My current direction is turning AI demos into repeatable production practice: observable LLM calls, multi-model routing, prompt and tool workflows, and team-level adoption of AI coding tools.
-
-## Control Surface
+## Work
 
 <p align="center">
-  <img src="./assets/llm-pipeline.svg" alt="LLM application pipeline" width="100%" />
+  <img src="./assets/ai-workflow-map.svg" alt="AI engineering workflow map" width="100%" />
 </p>
 
-## Current Focus
+## Current Questions
 
-- Building full-stack products with TypeScript, Next.js, React, Node.js, and SQL databases
-- Developing LLM applications with streaming, RAG, function calling, and DONE signal parsing
-- Integrating multiple model providers including Qwen, DashScope, GLM, DeepSeek, and OpenRouter
-- Creating LLM observability infrastructure around logged calls, latency, tokens, and tool traces
-- Exploring local image and video generation workflows with FLUX, ComfyUI, and Draw Things
-- Helping a large embedded engineering team adopt AI coding tools in a practical, measurable way
+- How do we turn AI demos into production workflows that can be reviewed, observed, and improved?
+- How should product code expose retrieval, tools, and model routing without becoming fragile?
+- How can a large engineering team adopt AI coding tools without losing engineering judgment?
 
-## Stack
+## Practice
 
-<table>
-  <tr>
-    <td><b>Languages</b></td>
-    <td>TypeScript, JavaScript, Python, SQL</td>
-  </tr>
-  <tr>
-    <td><b>Frontend</b></td>
-    <td>Next.js 14, React, Tailwind CSS, Framer Motion, GSAP</td>
-  </tr>
-  <tr>
-    <td><b>Backend and Data</b></td>
-    <td>Node.js, Next.js API Routes, Prisma, PostgreSQL, MySQL, FastAPI, MinIO</td>
-  </tr>
-  <tr>
-    <td><b>AI and LLM</b></td>
-    <td>Streaming, RAG, function calling, tool use, multi-model routing, LLM call logging, prompt engineering</td>
-  </tr>
-  <tr>
-    <td><b>DevOps</b></td>
-    <td>Docker, docker-compose, AWS EC2, Git, GitHub, SSH deployment, pnpm</td>
-  </tr>
-</table>
+| Area | Tools and habits |
+| --- | --- |
+| Product engineering | TypeScript, Next.js 14, React, Tailwind CSS, Framer Motion, GSAP |
+| Backend and data | Node.js, Next.js API Routes, Prisma, PostgreSQL, MySQL, FastAPI, MinIO |
+| LLM applications | Streaming, RAG, function calling, DONE parsing, multi-provider routing |
+| Model providers | Qwen, DashScope, GLM, DeepSeek, OpenRouter |
+| Engineering systems | Docker, AWS EC2, GitHub, SSH deployment, pnpm, ADRs, structured PRs |
+| AI workflows | Claude Code, Codex, prompt engineering, local generation with FLUX and ComfyUI |
 
-## Engineering Style
+## Principles
 
-- Product thinking before implementation detail
-- Small, reviewable changes
-- Explicit architecture decisions through ADRs
-- Clean Core/API boundaries where they matter
-- AI tools used as engineering leverage, not as shortcuts around understanding
+- Start with the product question, then choose the technical shape.
+- Keep changes small enough to review and systems explicit enough to debug.
+- Treat AI as engineering leverage, not as a shortcut around understanding.
+- Prefer workflows that teams can repeat, measure, and improve.
 
-## GitHub Signal
+## Signal
 
 <p align="center">
-  <img height="165" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=PaulCheng1122&show_icons=true&hide_border=true&bg_color=0D1117&title_color=78DCE8&text_color=C9D1D9&icon_color=F8D66D" />
-  <img height="165" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulCheng1122&layout=compact&hide_border=true&bg_color=0D1117&title_color=78DCE8&text_color=C9D1D9" />
-</p>
-
-<p align="center">
-  <img alt="Activity graph" src="https://github-readme-activity-graph.vercel.app/graph?username=PaulCheng1122&bg_color=0D1117&color=C9D1D9&line=78DCE8&point=F8D66D&area=true&hide_border=true" />
+  <img height="165" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=PaulCheng1122&show_icons=true&hide_border=true&bg_color=FBF7F0&title_color=211F1B&text_color=5F564B&icon_color=8A5E3B" />
+  <img height="165" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulCheng1122&layout=compact&hide_border=true&bg_color=FBF7F0&title_color=211F1B&text_color=5F564B" />
 </p>
 
 ---
 
 <p align="center">
-  <b>Building full-stack products, LLM systems, and AI-powered engineering workflows.</b>
+  Full-stack products, LLM systems, and practical AI adoption.
 </p>

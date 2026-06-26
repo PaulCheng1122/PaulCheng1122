@@ -1,0 +1,88 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Paul Cheng profile cover</title>
+  <desc id="desc">A warm editorial profile cover with quiet product-system typography and a simple AI engineering diagram.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1200" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="0.52" stop-color="#F3EBDD"/>
+      <stop offset="1" stop-color="#EEE1CF"/>
+    </linearGradient>
+    <pattern id="grain" width="120" height="120" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="28" r="1" fill="#2A251F" opacity="0.035"/>
+      <circle cx="72" cy="18" r="1" fill="#2A251F" opacity="0.03"/>
+      <circle cx="44" cy="84" r="1" fill="#2A251F" opacity="0.025"/>
+      <circle cx="104" cy="92" r="1" fill="#2A251F" opacity="0.028"/>
+    </pattern>
+    <style>
+      .serif { font-family: Georgia, "Times New Roman", serif; }
+      .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .ink { fill: #211F1B; }
+      .muted { fill: #685F52; }
+      .line { stroke: #B7A795; }
+      .hair { stroke: #D4C5B4; }
+      .card { fill: rgba(255, 252, 246, 0.62); stroke: #CDBEAC; }
+      .chip { fill: #EFE4D5; stroke: #CDBEAC; }
+      .accent { fill: #8A5E3B; }
+      .sage { fill: #5E6F64; }
+      .rule { stroke: #2A251F; stroke-width: 1.2; opacity: 0.72; }
+      .micro { font-size: 13px; letter-spacing: 1.5px; }
+      .body { font-size: 20px; }
+      .body2 { font-size: 17px; }
+      .title { font-size: 74px; letter-spacing: -1px; font-weight: 500; }
+      .subtitle { font-size: 26px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#paper)"/>
+  <rect width="1200" height="420" fill="url(#grain)"/>
+
+  <path d="M64 54H1136" class="rule"/>
+  <path d="M64 346H1136" class="hair"/>
+
+  <g transform="translate(64 84)">
+    <text class="mono micro muted" x="0" y="0">PROFILE / FULL-STACK AI ENGINEERING</text>
+    <text class="serif title ink" x="0" y="78">Paul Cheng</text>
+    <text class="sans subtitle ink" x="2" y="124">LLM applications and practical AI workflows.</text>
+    <text class="sans body muted" x="2" y="162">TypeScript product engineering, model integrations, observability,</text>
+    <text class="sans body muted" x="2" y="190">and agentic coding practice for teams.</text>
+
+    <g transform="translate(0 226)">
+      <rect class="chip" width="134" height="40" rx="20"/>
+      <text class="mono micro ink" x="22" y="25">TYPESCRIPT</text>
+      <rect class="chip" x="150" width="106" height="40" rx="20"/>
+      <text class="mono micro ink" x="175" y="25">NEXT.JS</text>
+      <rect class="chip" x="272" width="96" height="40" rx="20"/>
+      <text class="mono micro ink" x="301" y="25">RAG</text>
+      <rect class="chip" x="384" width="154" height="40" rx="20"/>
+      <text class="mono micro ink" x="411" y="25">LLM SYSTEMS</text>
+    </g>
+  </g>
+
+  <g transform="translate(720 88)">
+    <rect class="card" width="416" height="220" rx="2"/>
+    <path d="M28 52H388" class="hair"/>
+    <path d="M28 110H388" class="hair"/>
+    <path d="M28 168H388" class="hair"/>
+    <path d="M118 30V190" class="hair"/>
+    <path d="M238 30V190" class="hair"/>
+
+    <text class="mono micro muted" x="28" y="34">SYSTEM NOTES</text>
+    <text class="sans body2 ink" x="28" y="86">Product</text>
+    <text class="sans body2 ink" x="148" y="86">Models</text>
+    <text class="sans body2 ink" x="268" y="86">Team</text>
+
+    <circle cx="62" cy="138" r="18" fill="#8A5E3B"/>
+    <circle cx="182" cy="138" r="18" fill="#5E6F64"/>
+    <circle cx="302" cy="138" r="18" fill="#2F4B5B"/>
+    <path d="M80 138H164" class="line"/>
+    <path d="M200 138H284" class="line"/>
+
+    <text class="mono micro muted" x="28" y="204">OBSERVE -> ROUTE -> SHIP</text>
+  </g>
+
+  <g transform="translate(64 372)">
+    <text class="mono micro muted" x="0" y="0">QWEN / DEEPSEEK / GLM / OPENROUTER</text>
+    <text class="mono micro muted" x="836" y="0">QUIET PRODUCT SYSTEMS</text>
+  </g>
+</svg>
